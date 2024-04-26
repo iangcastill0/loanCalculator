@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mortgage Calculator</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div>
+        <p>Loan Amount</p>
+        $<input type="number" id="Principle" >
+        <br>
+        <p>APR%</p>
+        $<input type="number" id="Apr" >
+        <br>
+        <p>Loan Duration</p>
+        $<input type="number" id="Months" >
+        <br>
+        <br>
+        <button type="button" id="calc">Calculate</button>
+        $<input type="number" id="outputE" readonly>
+    </div>
+</body>
+<script type="text/javascript">
+    function calculate(){
+        debugger 
+        const principalAmount = Number(Principle.value);
+        const percentageRate = Number(Apr.value) / 100;
+        const numberOfMonths = Number(Months.value) * 12;
+
+        const result = getPayment (principalAmount, percentageRate, numberOfMonths);
+        outputE.value = result.toFixed(2);
+
+        const totalPaid = result * numberOfMonths;
+        const interestPaid = totalPaid - principalAmount;
+    }
+    calc.onclick = calculate;
+</script>
+</html>
