@@ -20,7 +20,9 @@
         <br> 
         <br>   
         <button type="button" id="calc">Calculate</button>
-        <input type="number" id="outputE" readonly placeholder="$">
+        <input type="number" id="outputM" readonly placeholder="$Monthly Payment">
+        <input type="number" id="outputT" readonly placeholder="$Total Paid">
+        <input type="number" id="outputI" readonly placeholder="$Intrest Paid">
     </div>
 </body>
 <script type="text/javascript">
@@ -31,10 +33,13 @@
         const numberOfMonths = Number(Months.value) * 12;
 
         const result = getPayment (principalAmount, percentageRate, numberOfMonths);
-        outputE.value = result.toFixed(2);
+        outputM.value = result.toFixed(2);
 
         const totalPaid = result * numberOfMonths;
         const interestPaid = totalPaid - principalAmount;
+
+        outputT.value = totalPaid.toFixed(2);
+        outputI.value = interestPaid.toFixed(2);
     }
     calc.onclick = calculate;
 </script>
